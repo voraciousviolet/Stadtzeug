@@ -1,8 +1,15 @@
 {
   "title": "Stadtzeug",
+  "namespace": "Stadtzeug",
   "version": "0.1.0",
   "authors": ["Nicholas Fleck"],
   "description": "Package for Stadtzeug.",
   "run": ["sz/main"],
-  "tags": ["stadtzeug", "city", "simulation"]
+  "tags": ["stadtzeug", "city", "simulation"],
+  "dependencies": [
+    {
+      "namespace": "Rantionary",
+      "version": ">2.0.0"
+    }
+  ]
 }
