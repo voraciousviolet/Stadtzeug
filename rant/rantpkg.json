@@ -1,0 +1,8 @@
+{
+  "title": "Stadtzeug",
+  "version": "0.1.0",
+  "authors": ["Nicholas Fleck"],
+  "description": "Package for Stadtzeug.",
+  "run": ["sz/main"],
+  "tags": ["stadtzeug", "city", "simulation"]
+}

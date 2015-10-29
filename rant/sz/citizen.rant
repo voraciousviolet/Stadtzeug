@@ -1,0 +1,15 @@
+# Name
+[open:firstname;private]
+  [x:_sex;locked]{<name-male>|<name-female>}
+[close:firstname]
+
+[open:lastname;private]
+  <lastname>
+[close:lastname]
+
+[open:sex;private][x:_sex;locked]{Male|Female}[close:sex]
+
+# Age stuff
+[open:age;private][n:18;80][close:age]
+[open:birthmonth;private][n:0;11][close:birthmonth]
+[open:birthday;private][n:0;31][close:birthday]
