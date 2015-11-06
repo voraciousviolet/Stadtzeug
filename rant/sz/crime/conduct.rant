@@ -12,9 +12,12 @@
     <adj-cn1|cn2|cn3::!qualifier1>
   |
     [x:static_qualifier;deck]
-    {aggravated[@s+=10;]|vehicular[@s+=10;]|disorderly|gross|misdemeanor[@s/=2;]|felony[@s+=20;m+=2;]|indecent}
+    {aggravated[@s+=10;]|vehicular[@s+=10;]|disorderly|gross|misdemeanor[@s/=2;]|felony[@s+=20;m+=2;]|indecent|unscrupulous|domestic|sexual[@s+=10;]|
+    statutory[@s+=10;]|capital[@s+=30;]|}
   }\s
-  {{<adj>|<noun-tool|weapon>}\s|}{homicide[@s+=5;]|conduct|assault|murder[@s+=5;]|battery|<verb-violent-transitive.nom>}
+  {{<adj>|<noun-tool|weapon>}\s|}{homicide[@s+=5;]|conduct|assault|murder[@s+=5;]|battery|display of <emo>[@s+=3;]|<noun-drug> possesion|
+  <verb-violent-transitive.nom>|arson[@s+=5;]|<noun-internet|currency|nsfw> fraud|conspiracy[@s+=3;]|embezzlement|extortion|perjury|solicitation|
+  harrassment|theft|vandalism|shoplifting without \a <noun-plant|nsfw|leather|organ|container|>|}
   {(32)|\swith \a <adj-cn1|cn2|cn3> <noun-weapon|tool|long|body>[@s+=10;]}
 |
   <verb-transitive-violent.nom> of \a {{<adj-c0|cp1>[@s+=5;]|<verb-intransitive-!violent.ing>|<noun>}\s|}<noun-job>
