@@ -1,0 +1,24 @@
+[@ var s = 1; var m = 1;]
+
+# Degree
+[chance:25]
+{{first[@s+=15;m+=2]|second[@s+=10;m+=1;]|third[@s+=5;m/=2;]}-degree\s}
+
+# Crime name
+{
+(4)
+  [rs:[n:1;2];\s]
+  {
+    <adj-cn1|cn2|cn3::!qualifier1>
+  |
+    [x:static_qualifier;deck]
+    {aggravated[@s+=10;]|vehicular[@s+=10;]|disorderly|gross|misdemeanor[@s/=2;]|felony[@s+=20;m+=2;]|indecent}
+  }\s
+  {{<adj>|<noun-tool|weapon>}\s|}{homicide[@s+=5;]|conduct|assault|murder[@s+=5;]|battery|<verb-violent-transitive.nom>}
+  {(32)|\swith \a <adj-cn1|cn2|cn3> <noun-weapon|tool|long|body>[@s+=10;]}
+|
+  <verb-transitive-violent.nom> of \a {{<adj-c0|cp1>[@s+=5;]|<verb-intransitive-!violent.ing>|<noun>}\s|}<noun-job>
+  [@s+=5;m+=1;]
+}
+
+[open:severity;private][@s*m][close:severity]

@@ -33,21 +33,24 @@ namespace Stadtzeug
 		public T Get(long seed)
 		{
 			int i;
-			if (!map.TryGetValue(seed, out i))
+			// Looks up the location of the seed in the cache.
+			if (map.TryGetValue(seed, out i))
 			{
+				// If found, move the seed vaue to the front of the cache.
 				items[pos] = items[i];
+				// Remove the previous index on record.
+				map.Remove(seeds[pos]);
 			}
 			else
 			{
 				items[pos] = _initializer(seed);
-				map.Remove(seeds[pos]);
 			}
 
 			seeds[pos] = seed; // Update the seed record for the current item
 			i = pos; // Recycle the variable to hold the return value index
 			map[seed] = pos; // Update the index to the item's new location
 			pos = (pos + 1) % _capacity; // Incrememt the write position
-			return items[pos];
+			return items[i];
 		}
 	}
 }

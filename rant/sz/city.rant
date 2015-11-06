@@ -1,0 +1,14 @@
+[open:name;private]
+[case:title]
+{
+  {<noun>|<verb>|<verb.er>|<verb.ing>|<adj-c0|cp1>}{ton|opolis|sta|ole|ton|berg}
+|
+  St. <surname>
+}
+[close:name]
+
+[open:month;private][n:1;12][close:month]
+
+[open:day;private][n:1;31][close:day]
+
+[open:year;private][n:1990;1993][close:year]

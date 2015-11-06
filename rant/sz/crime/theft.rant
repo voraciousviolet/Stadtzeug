@@ -1,0 +1,14 @@
+[@ var s = 1; var m = 1;]
+
+# Degree
+[chance:25]
+{{first[@s+=12;m+=1.5]|second[@s+=8;m+=.5;]|third[@s+=4;m/=2;]}-degree\s}
+
+# Crime name
+{
+  {{<adj-cn2>|aggravated}\s|(10)}{burglary|robbery|theft}
+|
+  grand theft <noun>
+}
+
+[open:severity;private][@s*m][close:severity]

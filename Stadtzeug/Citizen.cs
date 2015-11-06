@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using Rant;
 
@@ -15,11 +16,18 @@ namespace Stadtzeug
 
 		public string FirstName { get; }
 
+		public string MiddleName { get; }
+		public char MiddleInitial { get; }
+
 		public string LastName { get; }
 
 		public Sex Sex => _sex;
 
 		public DateTime BirthDate { get; }
+
+		public int Age => _city.CurrentTime.Subtract(BirthDate).Days / 365;
+
+		public long Seed => _seed;
 
 		public Citizen(City city, long seed)
 		{
@@ -30,24 +38,19 @@ namespace Stadtzeug
 
 			var sdata = city.Rant.DoPackaged("sz/citizen", _seed);
 			FirstName = String.Intern(sdata["firstname"]);
+			MiddleName = String.Intern(sdata["middlename"]);
+			MiddleInitial = MiddleName.FirstOrDefault(Char.IsLetter);
 			LastName = String.Intern(sdata["lastname"]);
 			Enum.TryParse(sdata["sex"], true, out _sex);
-			int age, birthMonth, birthDay;
-			
-			if (!int.TryParse(sdata["age"], out age) || age < 0)
-			{
-				age = (_rng.Next(18, 30) + _rng.Next(18, 70)) / 2;
-			}
 
-			if (!int.TryParse(sdata["birthmonth"], out birthMonth) || birthMonth < 0 || birthMonth > 11)
-			{
-				birthMonth = _rng.Next(12);
-			}
+			// Tilt the distribution towards younger people
+			var age = _rng.Next(18, _rng.Next(30, _rng.Next(30, 100)));
 
-			if (!int.TryParse(sdata["birthday"], out birthMonth) || birthMonth < 0 || birthMonth > 11)
-			{
-				birthMonth = _rng.Next(32);
-			}
+			var birthMonth = _rng.Next(12) + 1;
+
+			var birthDay = _rng.Next(DateTime.DaysInMonth(city.StartingTime.Year - age, birthMonth)) + 1;
+
+			BirthDate = new DateTime(city.StartingTime.Year - age, birthMonth, birthDay, 0, 0, 0);
 		}
 	}
 }

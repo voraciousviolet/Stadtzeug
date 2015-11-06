@@ -1,3 +1,0 @@
-[$[.bounce:input]:
-  [`\w`i:[arg:input];[match][chance:25]{[r:[n:1;2]]{[match]}}]
-]

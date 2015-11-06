@@ -1,5 +1,0 @@
-[$[module:modulename;@body]:
-  [ifndef:__lib_[arg:modulename]][then:[define:__lib_[arg:modulename]]
-    [arg:body]
-  ]
-]
